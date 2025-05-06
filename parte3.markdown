@@ -102,3 +102,20 @@ O cluster usa consenso Raft.
 Podem ser milhares, diferente dos gerentes.
 
 Usam o protocolo gossip para comunicação eficiente em larga escala.
+
+# Resumo
+
+Pontos-chave para lembrar:
+Docker Swarm agenda serviços usando uma linguagem declarativa.
+Você declara o estado desejado e o Swarm tenta mantê-lo, conciliando o estado real com o esperado.
+
+O Docker Swarm é composto por nós gerentes e nós de trabalho.
+Apenas os managers podem manter e modificar o estado do swarm.
+Os workers são altamente escaláveis e servem apenas para executar containers.
+Por padrão, managers também podem executar containers.
+
+A malha de roteamento (routing mesh) integrada ao Swarm
+permite que qualquer porta publicada em um serviço seja exposta em todos os nós do cluster.
+As requisições são automaticamente roteadas para algum container do serviço em execução.
+
+Você pode usar outras ferramentas de orquestração para lidar com aplicações conteinerizadas em produção, como o Docker Swarm e o IBM Cloud Kubernetes Service.
