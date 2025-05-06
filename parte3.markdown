@@ -26,3 +26,24 @@ docker container ls
 
 # Testa o serviço HTTP na porta 80, mostrando o hostname do nó que atendeu
 curl localhost:80
+
+
+# Exibe os logs agregados do serviço “nginx1” sem truncar as mensagens
+docker service logs nginx1 --no-trunc
+
+# Atualiza o serviço “nginx1” para ter 5 réplicas, executando em segundo plano
+docker service update --replicas=5 --detach=true nginx1
+
+# Lista as tarefas (containers) do serviço “nginx1” e seus estados atuais
+docker service ps nginx1
+
+# Envia uma requisição HTTP para localhost:80, exibindo o hostname do nó que atendeu
+curl localhost:80
+
+# Repita a chamada curl para observar o balanceamento entre nós
+curl localhost:80
+curl localhost:80
+curl localhost:80
+
+# Exibe novamente os logs agregados do serviço para ver qual container/nó atendeu cada requisição
+docker service logs nginx1
