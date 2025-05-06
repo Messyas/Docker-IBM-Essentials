@@ -47,3 +47,14 @@ curl localhost:80
 
 # Exibe novamente os logs agregados do serviço para ver qual container/nó atendeu cada requisição
 docker service logs nginx1
+
+# parte4
+
+# Inicia o rolling update do serviço “nginx1” para usar a imagem nginx:1.13
+docker service update --image nginx:1.13 --detach=true nginx1
+
+# Monitora o progresso das tasks para ver os containers sendo atualizados
+docker service ps nginx1
+
+# parte 5
+
