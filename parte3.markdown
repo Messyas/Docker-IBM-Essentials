@@ -58,3 +58,13 @@ docker service ps nginx1
 
 # parte 5
 
+# Cria um novo serviço “nginx2” com 5 réplicas, publica a porta 81 no host para a porta 80 do container e monta o hostname do nó em index.html
+docker service create --detach=true --name nginx2 --replicas=5 --publish 81:80 \
+  --mount type=bind,source=/etc/hostname,target=/usr/share/nginx/html/index.html,ro \
+  nginx:1.12
+
+# Monitora em tempo real (a cada 1s) o estado das tasks do serviço “nginx2”
+watch -n 1 docker service ps nginx2
+
+# Faz o nó atual deixar o swarm
+docker swarm leave
